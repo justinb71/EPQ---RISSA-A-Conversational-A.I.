@@ -20,3 +20,9 @@ RISSA is a conversational A.I. that can do many tasks such as:
   <img src="https://github.com/justinb71/EPQ---RISSA-A-Conversational-A.I./blob/main/Images/Implementation%20Example%202%20-%20Copy.png" />
 </p>
 
+# Memory
+
+RISSA uses a huge memory corpus that can save and remember many things. It classifiesit into the following categories:
+<p align="center">
+  <img src="https://github.com/justinb71/EPQ---RISSA-A-Conversational-A.I./blob/main/Images/Untitled%20Diagram.drawio%20(2).png" />
+</p>
