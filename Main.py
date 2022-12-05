@@ -1,3 +1,4 @@
+#Importing Libraries 
 import numpy as np
 from keras_preprocessing.sequence import pad_sequences
 from keras.models import load_model
@@ -14,14 +15,14 @@ import sv_ttk
 from tkinter.scrolledtext import *
 from PIL import Image, ImageTk
 
-#Variables & Constants
+# Variables & Constants
 
 currentUserName = "None"
 botsName = "RISSA"
 response_num = 0
 changeName = False
 
-#Wolfram Function
+# Wolfram Function
 def wolframCalculator(question):
     app_id = "XG763R-2VQ83KP349"
     client = wolframalpha.Client(app_id)
@@ -29,10 +30,9 @@ def wolframCalculator(question):
     answer = next(result.results).text
     return answer
 
-
+# Tokenizer
 tokenizer2 = AutoTokenizer.from_pretrained("Jean-Baptiste/camembert-ner")
 model = AutoModelForTokenClassification.from_pretrained("Jean-Baptiste/camembert-ner")
-
 nlp = pipeline('ner', model=model, tokenizer=tokenizer2, aggregation_strategy="simple")
 
 #Getting users name from text function
