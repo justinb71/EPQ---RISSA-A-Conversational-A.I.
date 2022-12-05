@@ -5,9 +5,10 @@
 
 RISSA is a conversational A.I. that can do many tasks such as:
 
- - Perform maths calculations
+ - Perform Maths calculations
  - Perform Physics calculations
  - Detect the person it is talking to using voice recognition and facial recognition
+ - Remember interations with people and phtots it has interacted with
 
 
 # Examples
