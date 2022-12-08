@@ -1,3 +1,4 @@
+#Importing Libraries 
 import numpy as np
 from keras_preprocessing.sequence import pad_sequences
 from keras.models import load_model
@@ -14,14 +15,14 @@ import sv_ttk
 from tkinter.scrolledtext import *
 from PIL import Image, ImageTk
 
-#Variables & Constants
+# Variables & Constants
 
 currentUserName = "None"
 botsName = "RISSA"
 response_num = 0
 changeName = False
 
-#Wolfram Function
+# Wolfram Function
 def wolframCalculator(question):
     app_id = "XG763R-2VQ83KP349"
     client = wolframalpha.Client(app_id)
@@ -29,25 +30,21 @@ def wolframCalculator(question):
     answer = next(result.results).text
     return answer
 
-
+# Create the model for word classification
 tokenizer2 = AutoTokenizer.from_pretrained("Jean-Baptiste/camembert-ner")
 model = AutoModelForTokenClassification.from_pretrained("Jean-Baptiste/camembert-ner")
-
 nlp = pipeline('ner', model=model, tokenizer=tokenizer2, aggregation_strategy="simple")
 
-#Getting users name from text function
+# Getting users name from text function
 def getName(message):
     classifications = nlp(message)
 
     for i in range(len(classifications)):
         if classifications[i-1]["entity_group"] =="PER":
             name = classifications[i-1]["word"]
-
     return name
 
-
-
-
+# Generating the model for intent detection
 class IntentClassifier:
     def __init__(self,classes,model,tokenizer,label_encoder):
         self.classes = classes
@@ -62,6 +59,7 @@ class IntentClassifier:
         self.pred = self.classifier.predict(self.test_keras_sequence)
         return self.label_encoder.inverse_transform(np.argmax(self.pred,1))[0]
 
+# Getting the model and data from files
 intentsModel = load_model('models/intents.h5')
 
 with open('utils/classes.pkl','rb') as file:
@@ -73,14 +71,18 @@ with open('utils/tokenizer.pkl','rb') as file:
 with open('utils/label_encoder.pkl','rb') as file:
   label_encoder = pickle.load(file)
 
+# Summarisation of the model into a function
 nlu = IntentClassifier(classes,intentsModel,tokenizer,label_encoder)
 intent = nlu.get_intent("Test")
 
+# Main function
 def process():
+    # Fetches global variables
     global changeName
     global name
     global currentUserName
-
+    
+    # Changes 
     if changeName:
         remember = userInput.get()
 
@@ -89,9 +91,6 @@ def process():
         if "yes" in remember.lower() or "yeah" in remember.lower():
                 currentUserName = str(name)
                 addMessage("Ok, I will now call you " + currentUserName,False)
-        
-
-       
     else:
         message = userInput.get()
         UserinputMessage()
@@ -272,6 +271,5 @@ button.pack(anchor=customtkinter.CENTER, pady=10)
 
 addMessage("Hey",False)
 app.mainloop()
-
 
 
