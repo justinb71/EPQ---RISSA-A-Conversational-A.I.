@@ -162,8 +162,8 @@ def process():
 model_name = "microsoft/DialoGPT-large"
 
 conversationTokenizer = AutoTokenizer.from_pretrained(model_name)
-conversationModel = AutoModelForCausalLM.from_pretrained(model_name)
 conversationTokenizer.padding_side = "left"
+conversationModel = AutoModelForCausalLM.from_pretrained(model_name)
 
 
 
