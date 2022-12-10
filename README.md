@@ -32,11 +32,11 @@ RISSA uses a huge memory corpus that can save and remember many things. It class
 
 # Features To Implement 
 
- - [ ] RISSA can understand and give a coherent response in english
+ - [x] RISSA can understand and give a coherent response in english
  - [ ] RISSA can remember previous encounter
  - [ ] RISSA can recognise voices
  - [ ] RISSA can recognise faces
  - [ ] RISSA can change the way it speaks based on the person it is interacting with
- - [ ] RISSA has a GUI that has all the necessary information (messages from both parties, entry box, etc)
- - [ ] RISSA can perform maths calculations 
- - [ ] RISSA can remember previous  
+ - [x] RISSA has a GUI that has all the necessary information (messages from both parties, entry box, etc)
+ - [x] RISSA can perform maths calculations 
+ - [x] RISSA can base its sentences based on context
